@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/layout/SectionHeading.astro";
+import PrimaryButton from "../components/ui/PrimaryButton.astro";
+import { experts, getExpertById } from "../data/experts";
+---
+
+<BaseLayout title="متخصصان | AROVA" description="معرفی متخصصان آرووا: سورنا و دکتر محمدحسین روزبهانی." canonical="/experts">
+  <section class="section">
+    <div class="container">
+      <SectionHeading title="متخصصان" subtitle="متخصصانی که تجربه AROVA را شکل می‌دهند" align="center" />
+      <div class="grid md:grid-cols-2 gap-8 mt-10">
+        {experts.filter((e) => e.status === 'published').map((expert) => (
+          <div class="p-8 rounded-lg border border-[#BFC1C5] bg-white">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-16 h-16 rounded-full bg-[#5B1E2D] flex items-center justify-center text-white font-bold text-xl">
+                {expert.nameFa.charAt(0)}
+              </div>
+              <div>
+                <h2 class="text-2xl font-bold">{expert.name}</h2>
+                <p class="text-sm text-[#5B1E2D] font-medium">{expert.roleFa}</p>
+              </div>
+            </div>
+            <p class="text-[#92949A] leading-relaxed mb-6">{expert.bioFa}</p>
+            <h3 class="text-lg font-semibold mb-3">dlевойд</h3>
+            <ul class="list-disc list-inside text-[#92949A] leading-relaxed space-y-2 mb-6">
+              {expert.areas.map((a) => <li>{a}</li>)}
+            </ul>
+            <PrimaryButton label="نمایه کامل" href={`/experts/${expert.id}`} variant="outline" class="w-full" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+

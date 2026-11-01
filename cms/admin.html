@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head><meta charset="utf-8"><title>AROVA Studio (Local)</title>
+<style>body{font-family:sans-serif;padding:20px;max-width:900px;margin:auto}input,textarea,select{width:100%;padding:8px;margin:4px 0}button{padding:8px 16px;margin:4px;cursor:pointer}.card{border:1px solid #ccc;padding:12px;margin:8px 0;border-radius:8px}</style>
+</head>
+<body>
+<h1>AROVA Studio — Local CMS</h1>
+<p>Token: set X-CMS-Token header. Default dev token: dev-token-change-me</p>
+<h2>Founders</h2>
+<div id="list"></div>
+<h3>Create / Edit Founder</h3>
+<form id="form">
+<input name="id" placeholder="id (leave blank for create)" />
+<input name="slug" placeholder="slug" required />
+<input name="name" placeholder="name" required />
+<input name="public_title" placeholder="public_title" />
+<input name="role" placeholder="role" />
+<textarea name="short_positioning" placeholder="short_positioning"></textarea>
+<textarea name="bio_short" placeholder="bio_short"></textarea>
+<textarea name="bio_full" placeholder="bio_full"></textarea>
+<select name="status"><option value="draft">draft</option><option value="review">review</option><option value="approved">approved</option><option value="published">published</option><option value="archived">archived</option></select>
+<input name="token" placeholder="CMS token" value="dev-token-change-me" />
+<button type="submit">Save</button>
+</form>
+<script>
+const API='/api/founders';
+const token=()=>document.querySelector('[name=token]').value;
+async function load(){
+  const r=await fetch(API+'?status=draft',{headers:{'X-CMS-Token':token()}});
+  const j=await r.json();
+  document.getElementById('list').innerHTML=(j.data||[]).map(f=>`<div class="card"><b>${f.name}</b> (${f.slug}) — ${f.status}<br/>${f.short_positioning||''}</div>`).join('')||'No founders';
+  // also published
+  const r2=await fetch(API);
+  const j2=await r2.json();
+  document.getElementById('list').innerHTML += '<h4>Published:</h4>' + (j2.data||[]).map(f=>`<div class="card"><b>${f.name}</b> (${f.slug}) — published</div>`).join('');
+}
+document.getElementById('form').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const fd=new FormData(e.target);
+  const body={};
+  for(const [k,v] of fd.entries()) if(k!=='token' && v!=='') body[k]=v;
+  if(body.id){const id=body.id;delete body.id; await fetch(API+'/'+id,{method:'PUT',headers:{'Content-Type':'application/json','X-CMS-Token':token()},body:JSON.stringify(body)});}
+  else{await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','X-CMS-Token':token()},body:JSON.stringify(body)});}
+  load();
+});
+load();
+</script>
+</body></html>

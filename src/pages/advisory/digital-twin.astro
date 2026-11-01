@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeading from "../../components/layout/SectionHeading.astro";
+import PrimaryButton from "../../components/ui/PrimaryButton.astro";
+---
+
+<BaseLayout title="دیجیتال تون | AROVA" description="نمایندگی دیجیتالی از یک سیستم فیزیکی یا عملیاتی که از طریق داده و مدل به آن متصل است." canonical="/advisory/digital-twin">
+  <section class="section">
+    <div class="container">
+      <SectionHeading title="دیجیتال تون" subtitle="مشاوره دیجیتال تون و شبیه‌سازی ترکیبی" align="center" />
+      <div class="grid lg:grid-cols-2 gap-12 mt-10">
+        <div class="space-y-6">
+          <div class="p-6 rounded-lg border border-[#BFC1C5] bg-white flex items-start gap-3">
+            <span class="text-[#5B1E2D] font-bold mt-0.5">1.</span>
+            <p class="text-[#92949A] leading-relaxed">توضیح مفهوم دیجیتال تون</p>
+          </div>
+          <div class="p-6 rounded-lg border border-[#BFC1C5] bg-white flex items-start gap-3">
+            <span class="text-[#5B1E2D] font-bold mt-0.5">2.</span>
+            <p class="text-[#92949A] leading-relaxed">تفاوت مشاوره مفهومی و تون در زمان واقعی</p>
+          </div>
+          <div class="p-6 rounded-lg border border-[#BFC1C5] bg-white flex items-start gap-3">
+            <span class="text-[#5B1E2D] font-bold mt-0.5">3.</span>
+            <p class="text-[#92949A] leading-relaxed">الزامات سنسورها و شبیه‌سازی‌ها</p>
+          </div>
+          <div class="p-6 rounded-lg border border-[#BFC1C5] bg-white flex items-start gap-3">
+            <span class="text-[#5B1E2D] font-bold mt-0.5">4.</span>
+            <p class="text-[#92949A] leading-relaxed">فراوانی به‌روزرسانی</p>
+          </div>
+        </div>
+        <div class="space-y-6">
+          <div class="p-6 rounded-lg border border-[#5B1E2D] bg-[#5B1E2D] text-white">
+            <h3 class="text-lg font-semibold mb-4">محدودیت‌ها و شرایط</h3>
+            <p class="text-[#F2EFE9] leading-relaxed">دیجیتال تون در زمان واقعی نیاز به بررسی Independents و است.</p>
+          </div>
+          <PrimaryButton label="درخواست مشاوره" href="/contact" variant="primary" class="w-full" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

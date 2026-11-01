@@ -1,0 +1,234 @@
+﻿---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/layout/SectionHeading.astro";
+import { contactConfig } from "../data/contact";
+
+const { inquiryTypes } = contactConfig;
+---
+
+<BaseLayout title="ØªÙ…Ø§Ø³ Ø¨Ø§ Ù…Ø§ | AROVA" description="Ø¯Ø±Ø®ÙˆØ§Ø³Øª Ù‡Ù…Ú©Ø§Ø±ÛŒØŒ Ù…Ø´Ø§ÙˆØ±Ù‡ ÛŒØ§ Ø§Ø·Ù„Ø§Ø¹Ø§Øª Ø¨ÛŒØ´ØªØ±." canonical="/contact">
+  <section class="section">
+    <div class="container">
+      <SectionHeading title="ØªÙ…Ø§Ø³ Ø¨Ø§ Ù…Ø§" subtitle="Ø´Ø±ÙˆØ¹ Ú¯ÙØªâ€ŒÙˆÚ¯Ùˆ Ø¯Ø±Ø¨Ø§Ø±Ù‡ Ø¢Ù…ÙˆØ²Ø´ØŒ Ù…Ø´Ø§ÙˆØ±Ù‡ ÛŒØ§ Ù¾Ø±ÙˆÚ˜Ù‡" align="center" />
+      <div class="grid lg:grid-cols-2 gap-12 mt-10">
+        <form
+          id="contact-form"
+          class="space-y-6"
+          novalidate
+        >
+          <div class="space-y-2">
+            <label class="block text-base font-medium text-[#141414"]>Ù†ÙˆØ¹ Ø§Ø³ØªØ¹Ù„Ø§Ù…</label>
+            <select
+              id="inquiry-type"
+              class="w-full px-4 py-3 rounded-md border border-[#BFC1C5] bg-white text-[#141414] focus-visible:ring-2 focus-visible:ring-[#5B1E2D] focus-visible:border-transparent"
+              required
+            >
+              <option value="">Ø§Ù†ØªØ®Ø§Ø¨ Ú©Ù†ÛŒØ¯</option>
+              {inquiryTypes.map((t) => (
+                <option value={t.value}>{t.label}</option>
+              ))}
+            </select>
+            <p id="inquiry-type-error" class="mt-1 text-sm text-[#5B1E2D]" role="alert" hidden></p>
+          </div>
+
+          <div class="space-y-2">
+            <label class="block text-base font-medium text-[#141414"]>Ù†Ø§Ù… Ùˆ Ù†Ø§Ù… Ø®Ø§Ù†ÙˆØ§Ø¯Ú¯ÛŒ *</label>
+            <input
+              id="name"
+              type="text"
+              class="w-full px-4 py-3 rounded-md border border-[#BFC1C5] bg-white text-[#141414] focus-visible:ring-2 focus-visible:ring-[#5B1E2D] focus-visible:border-transparent"
+              required
+              placeholder="Ù†Ø§Ù… Ùˆ Ù†Ø§Ù… Ø®Ø§Ù†ÙˆØ§Ø¯Ú¯ÛŒ"
+            />
+            <p id="name-error" class="mt-1 text-sm text-[#5B1E2D]" role="alert" hidden></p>
+          </div>
+
+          <div class="space-y-2">
+            <label class="block text-base font-medium text-[#141414"]>Ø³Ø§Ø²Ù…Ø§Ù†</label>
+            <input
+              id="organization"
+              type="text"
+              class="w-full px-4 py-3 rounded-md border border-[#BFC1C5] bg-white text-[#141414] focus-visible:ring-2 focus-visible:ring-[#5B1E2D] focus-visible:border-transparent"
+              placeholder="Ù†Ø§Ù… Ø³Ø§Ø²Ù…Ø§Ù† (Ø§Ø®ØªÛŒØ§Ø±ÛŒ)"
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label class="block text-base font-medium text-[#141414"]>Ø§ÛŒÙ…ÛŒÙ„ ÛŒØ§ ØªÙ„ÙÙ† *</label>
+            <input
+              id="email"
+              type="email"
+              class="w-full px-4 py-3 rounded-md border border-[#BFC1C5] bg-white text-[#141414] focus-visible:ring-2 focus-visible:ring-[#5B1E2D] focus-visible:border-transparent"
+              placeholder="Ø§ÛŒÙ…ÛŒÙ„ ÛŒØ§ ØªÙ„ÙÙ†"
+            />
+            <p id="email-error" class="mt-1 text-sm text-[#5B1E2D]" role="alert" hidden></p>
+            <p class="mt-1 text-xs text-[#92949A]">ÛŒÚ© ÛŒØ§ Ù‡Ø± Ø¯Ùˆ Ù…ÙˆØ±Ø¯ Ø±Ø§ ÙˆØ§Ø±Ø¯ Ú©Ù†ÛŒØ¯.</p>
+          </div>
+
+          <div class="space-y-2">
+            <label class="block text-base font-medium text-[#141414"]>Ù¾ÛŒØ§Ù… *</label>
+            <textarea
+              id="message"
+              rows="5"
+              class="w-full px-4 py-3 rounded-md border border-[#BFC1C5] bg-white text-[#141414] focus-visible:ring-2 focus-visible:ring-[#5B1E2D] focus-visible:border-transparent"
+              required
+              placeholder="Ú†Ú¯ÙˆÙ†Ù‡ Ù…ÛŒâ€ŒØªÙˆØ§Ù†ÛŒÙ… Ú©Ù…Ú© Ú©Ù†ÛŒÙ…ØŸ"
+            ></textarea>
+            <p id="message-error" class="mt-1 text-sm text-[#5B1E2D]" role="alert" hidden></p>
+          </div>
+
+          <div class="space-y-2">
+            <input id="consent" type="checkbox" required class="mt-0.5 w-4 h-4 rounded border-[#BFC1C5] text-[#5B1E2D] focus:ring-[#5B1E2D]" />
+            <label for="consent" class="text-base leading-relaxed text-[#141414]">
+              Ø¨Ø§ Ø§Ø±Ø³Ø§Ù„ Ø§ÛŒÙ† ÙØ±Ù…ØŒ Ù…ÙˆØ§ÙÙ‚ Ù‡Ø³ØªÙ… Ú©Ù‡ Ø§Ø·Ù„Ø§Ø¹Ø§Øª Ù…Ù† Ø¨Ø±Ø§ÛŒ Ù¾Ø§Ø³Ø®Ú¯ÙˆÛŒÛŒ Ø¨Ù‡ Ø¯Ø±Ø®ÙˆØ§Ø³Øª Ù…Ù† Ø°Ø®ÛŒØ±Ù‡ Ø´ÙˆØ¯.
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            id="submit-btn"
+            class="w-full bg-[#5B1E2D] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#35131D] transition-colors focus-visible:ring-2 focus-visible:ring-[#5B1E2D] focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Ø§Ø±Ø³Ø§Ù„
+          </button>
+        </form>
+
+        <div id="form-success" class="hidden p-6 rounded-lg border border-[#5B1E2D] bg-[#5B1E2D] text-white space-y-4">
+          <h3 class="text-lg font-bold">برنامه ایمیل باز شد</h3>
+          <p class="text-[#F2EFE9] leading-relaxed">درخواست شما در برنامه ایمیل شما آماده ارسال است. لطفاً پیام را از برنامه ایمیل خود ارسال کنید.</p>
+          <button
+            id="reset-form"
+            class="w-full border border-[#F2EFE9] text-[#F2EFE9] px-6 py-3 rounded-md font-semibold hover:bg-[#F2EFE9] hover:text-[#141414] transition-colors"
+          >
+            Ù¾ÛŒØ§Ù… Ø¬Ø¯ÛŒØ¯
+          </button>
+        </div>
+
+        <div id="form-error" class="hidden p-6 rounded-lg border border-[#5B1E2D] bg-[#5B1E2D] text-white space-y-4">
+          <h3 class="text-lg font-bold">Ø®Ø·Ø§ Ø¯Ø± Ø§Ø±Ø³Ø§Ù„</h3>
+          <p class="text-[#F2EFE9] leading-relaxed" id="error-message">Ø®Ø·Ø§ÛŒÛŒ Ø¯Ø± Ø§Ø±Ø³Ø§Ù„ Ø¯Ø±Ø®ÙˆØ§Ø³Øª Ø±Ø® Ø¯Ø§Ø¯.</p>
+          <button
+            id="retry-form"
+            class="w-full border border-[#F2EFE9] text-[#F2EFE9] px-6 py-3 rounded-md font-semibold hover:bg-[#F2EFE9] hover:text-[#141414] transition-colors"
+          >
+            Ø¯ÙˆØ¨Ø§Ø±Ù‡ Ø§Ù…ØªØ­Ø§Ù† Ú©Ù†ÛŒØ¯
+          </button>
+        </div>
+      </div>
+
+      <div class="mt-16 pt-8 border-t border-[#BFC1C5]">
+        <SectionHeading title="Ø±ÙˆØ´â€ŒÙ‡Ø§ÛŒ ØªÙ…Ø§Ø³ Ø¯ÛŒÚ¯Ø±" subtitle="Ø¨Ø§ Ù…Ø§ ØªÙ…Ø§Ø³ Ø¨Ú¯ÛŒØ±ÛŒØ¯." align="center" />
+        <div class="grid md:grid-cols-3 gap-8 mt-8 text-center">
+          <div>
+            <p class="text-sm text-[#92949A] mb-2">Ø§ÛŒÙ…ÛŒÙ„</p>
+            <a href="mailto:info@arova.example.com" class="text-base font-medium text-[#141414] hover:text-[#5B1E2D]"><bdi>info@arova.example.com</bdi></a>
+          </div>
+          <div>
+            <p class="text-sm text-[#92949A] mb-2">Ø³Ø§Ø²Ù…Ø§Ù†</p>
+            <p class="text-base font-medium text-[#141414]">Ø¢Ø±ÙˆÙˆØ§ â€” Ø«Ø¨Øª Ù†Ø´Ø¯Ù‡</p>
+          </div>
+          <div>
+            <p class="text-sm text-[#92949A] mb-2">Ø¢Ø¯Ø±Ø³</p>
+            <p class="text-base font-medium text-[#141414]">Ø«Ø¨Øª Ù†Ø´Ø¯Ù‡</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const success = document.getElementById('form-success') as HTMLElement;
+    const error = document.getElementById('')! as HTMLElement;
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+    const resetBtn = document.getElementById('reset-form') as HTMLButtonElement;
+    const retryBtn = document.getElementById('retry-form') as HTMLButtonElement;
+
+    const showState = (state: 'form' | 'success' | 'error') => {
+      form.hidden = state !== 'form';
+      success.hidden = state !== 'success';
+      error.hidden = state !== 'error';
+    };
+
+    const validate = () => {
+      const type =  (document.getElementById('inquiry-type') as HTMLInputElement).value;
+      const name =  (document.getElementById('name') as HTMLInputElement).value.trim();
+      const email =  (document.getElementById('email') as HTMLInputElement).value.trim();
+      const message =  (document.getElementById('message') as HTMLTextAreaElement).value.trim();
+
+      let valid = true;
+
+      if (!type) {
+        document.getElementById('')!.hidden = false;
+        document.getElementById('')!.textContent = 'Ù†ÙˆØ¹ Ø§Ø³ØªØ¹Ù„Ø§Ù… Ø±Ø§ Ø§Ù†ØªØ®Ø§Ø¨ Ú©Ù†ÛŒØ¯.';
+        valid = false;
+      } else {
+        document.getElementById('')!.hidden = true;
+      }
+
+      if (!name) {
+        document.getElementById('')!.hidden = false;
+        document.getElementById('')!.textContent = 'Ù†Ø§Ù… Ùˆ Ù†Ø§Ù… Ø®Ø§Ù†ÙˆØ§Ø¯Ú¯ÛŒ Ø±Ø§ ÙˆØ§Ø±Ø¯ Ú©Ù†ÛŒØ¯.';
+        valid = false;
+      } else {
+        document.getElementById('')!.hidden = true;
+      }
+
+      if (!email) {
+        document.getElementById('')!.hidden = false;
+        document.getElementById('')!.textContent = 'Ø§ÛŒÙ…ÛŒÙ„ ÛŒØ§ ØªÙ„ÙÙ† Ø±Ø§ ÙˆØ§Ø±Ø¯ Ú©Ù†ÛŒØ¯.';
+        valid = false;
+      } else {
+        document.getElementById('')!.hidden = true;
+      }
+
+      if (!message) {
+        document.getElementById('')!.hidden = false;
+        document.getElementById('')!.textContent = 'Ù¾ÛŒØ§Ù… Ø±Ø§ ÙˆØ§Ø±Ø¯ Ú©Ù†ÛŒØ¯.';
+        valid = false;
+      } else {
+        document.getElementById('')!.hidden = true;
+      }
+
+      return valid;
+    };
+
+    const buildMailto = () => {
+      const type =  (document.getElementById('inquiry-type') as HTMLInputElement).value;
+      const name = (document.getElementById('name') as HTMLInputElement).value;
+      const org = (document.getElementById('organization') as HTMLInputElement).value;
+      const email = (document.getElementById('email') as HTMLInputElement).value;
+      const message = (document.getElementById('message') as HTMLTextAreaElement).value;
+
+      const body = `Ù†ÙˆØ¹ Ø§Ø³ØªØ¹Ù„Ø§Ù…: ${type}%0AÙ†Ø§Ù…: ${name}%0AØ³Ø§Ø²Ù…Ø§Ù†: ${org}%0AØ§ÛŒÙ…ÛŒÙ„/ØªÙ„ÙÙ†: ${email}%0A%0AÙ¾ÛŒØ§Ù…:%0A${encodeURIComponent(message)}`;
+      return `mailto:info@arova.example.com?subject=ØªÙ…Ø§Ø³ Ø¨Ø§ Ø¢Ø±ÙˆÙˆØ§ - ${encodeURIComponent(type)}&body=${body}`;
+    };
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!validate()) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Ø¯Ø± Ø­Ø§Ù„ Ø§Ø±Ø³Ø§Ù„...';
+
+      // No provider configured â†’ honest mailto fallback
+      const mailtoUrl = buildMailto();
+      window.location.href = mailtoUrl;
+
+      showState('success');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Ø§Ø±Ø³Ø§Ù„';
+    });
+
+    resetBtn.addEventListener('click', () => {
+      form.reset();
+      showState('form');
+    });
+
+    retryBtn.addEventListener('click', () => {
+      showState('form');
+    });
+  </script>
+</BaseLayout>
+
+

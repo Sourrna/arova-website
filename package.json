@@ -1,0 +1,28 @@
+{
+  "name": "arova",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "AROVA — Persian-first education, advisory and digital solutions brand",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "echo \"No test framework configured\" && exit 0"
+  },
+  "keywords": [
+    "astro",
+    "rtl",
+    "persian",
+    "education",
+    "advisory"
+  ],
+  "author": "AROVA",
+  "license": "ISC",
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@playwright/test": "^1.64.1",
+    "astro": "^7.4.4",
+    "typescript": "^5.9.3"
+  }
+}

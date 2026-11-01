@@ -1,0 +1,111 @@
+﻿---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/layout/SectionHeading.astro";
+import PrimaryButton from "../components/ui/PrimaryButton.astro";
+import { brand } from "../data/brand";
+import { experts } from "../data/experts";
+
+const { tagline, supportingStatement, businessLines, positioningFa } = brand;
+
+const featuredOffers = [
+  {
+    title: 'Ø¢Ù…ÙˆØ²Ø´ Ù‡ÙˆØ´ Ù…ØµÙ†ÙˆØ¹ÛŒ Ø¨Ø±Ø§ÛŒ Ø¯Ø§Ù†Ø´â€ŒØ¢Ù…ÙˆØ²Ø§Ù† Ùˆ Ù…ØªØ®ØµØµØ§Ù†',
+    href: '/education/ai-literacy',
+    description: 'Ø¢Ø´Ù†Ø§ÛŒÛŒ Ú©Ø§Ø±Ø¨Ø±Ø¯ÛŒ Ø¨Ø§ Ù‡ÙˆØ´ Ù…ØµÙ†ÙˆØ¹ÛŒØŒ Ù¾Ø±ÙˆÙ…Ù¾ØªÛŒÙ†Ú¯ØŒ Ø§Ù…Ù†ÛŒØª Ùˆ Ø§Ø³ØªÙØ§Ø¯Ù‡ Ù…Ø³Ø¦ÙˆÙ„Ø§Ù†Ø§Ù†Ù‡.',
+  },
+  {
+    title: 'ÙˆØ±Ú©Ø´Ø§Ù¾ Ù¾Ø±ÙˆÙ…Ù¾ØªÛŒÙ†Ú¯ Ùˆ ÙˆØ±Ú©â€ŒÙÙ„Ùˆ LLM',
+    href: '/education/llm-workflows',
+    description: 'Ø·Ø±Ø§Ø­ÛŒ Ù¾Ø±ÙˆÙ…Ù¾Øªâ€ŒÙ‡Ø§ÛŒ Ø³Ø§Ø®ØªØ§Ø±ÛŒØ§ÙØªÙ‡ØŒ ØªÙ‚Ø³ÛŒÙ… Ú©Ø§Ø± Ùˆ Ø³Ø§Ø®Øª ÙˆØ±Ú©â€ŒÙÙ„ÙˆÙ‡Ø§ÛŒ LLM.',
+  },
+  {
+    title: 'Ø§Ø³ØªØ±Ø§ØªÚ˜ÛŒ Ù‡ÙˆØ´ Ù…ØµÙ†ÙˆØ¹ÛŒ Ø¨Ø±Ø§ÛŒ Ù…Ø¯ÛŒØ±Ø§Ù†',
+    href: '/advisory/ai-strategy',
+    description: 'Ù…Ø±ÙˆØ± ÙØ±ØµØªâ€ŒÙ‡Ø§ÛŒ AIØŒ Ø¨Ø±Ø±Ø³ÛŒ Ø¢Ù…Ø§Ø¯Ú¯ÛŒ Ùˆ Ø±Ø§Ù‡â€ŒÙ…Ø§Ù†Ù†Ø¯ ØªØµÙ…ÛŒÙ…â€ŒØ§ÙØ²Ø§Ø±ÛŒ.',
+  },
+];
+---
+
+<BaseLayout title="ØµÙØ­Ù‡ Ø§ØµÙ„ÛŒ | AROVA" description="Ø¢Ø±ÙˆÙˆØ§ Ø¢Ù…ÙˆØ²Ø´ØŒ Ù…Ø´Ø§ÙˆØ±Ù‡ ØªØ®ØµØµÛŒ Ùˆ Ø±Ø§Ù‡Ú©Ø§Ø±Ù‡Ø§ÛŒ Ø¯ÛŒØ¬ÛŒØªØ§Ù„ Ø±Ø§ Ø¨Ù‡ Ù‡Ù… Ù¾ÛŒÙˆÙ†Ø¯ Ù…ÛŒâ€ŒØ¯Ù‡Ø¯." canonical="/">
+  <section class="relative pt-20 pb-16 overflow-hidden">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-sm font-medium text-[#5B1E2D] uppercase tracking-widest block mb-4">Ø¯Ø§Ù†Ø´ØŒ Ù…Ù‡Ù†Ø¯Ø³ÛŒ Ùˆ ÙÙ†Ø§ÙˆØ±ÛŒ</span>
+          <h1 class="text-5xl font-bold mb-6 leading-tight">{tagline}</h1>
+          <p class="text-lg text-[#92949A] mb-8 max-w-lg">{supportingStatement}</p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <PrimaryButton label="Ø´Ø±ÙˆØ¹ Ú¯ÙØªâ€ŒÙˆÚ¯Ùˆ" href="/contact" variant="primary" />
+            <PrimaryButton label="Ø­ÙˆØ²Ù‡â€ŒÙ‡Ø§ÛŒ ÙØ¹Ø§Ù„ÛŒØª" href="/services" variant="secondary" />
+          </div>
+        </div>
+        <div class="hidden lg:block">
+          <div class="w-full h-64 rounded-lg bg-[#202124] flex items-center justify-center border border-[#35131D]"><span class="text-[#BFC1C5] text-sm tracking-widest">AROVA</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--compact bg-[#202124] text-white">
+    <div class="container">
+      <SectionHeading title="Ú†Ø±Ø§ Ø¢Ø±ÙˆÙˆØ§ØŸ" subtitle={positioningFa} align="center" />
+      <div class="grid md:grid-cols-3 gap-8 mt-12">
+        {businessLines.map((line) => (
+          <div class="p-8 rounded-lg bg-[#141414] border border-[#202124]">
+            <h3 class="text-xl font-semibold mb-3">{line.title}</h3>
+            <p class="text-[#92949A] leading-relaxed">{line.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading title="Ø¹Ø±ÙˆØ¶ Ø§Ø±Ø§Ø¦Ù‡ÛŒ" subtitle="Ù†Ø®Ø³ØªÛŒÙ† Ø¨Ø±Ù†Ø§Ù…Ù‡â€ŒÙ‡Ø§ÛŒ Ø¢Ù…ÙˆØ²Ø´ÛŒ Ùˆ Ù…Ø´Ø§ÙˆØ±Ø´ÛŒ" align="center" />
+      <div class="grid md:grid-cols-3 gap-6 mt-10">
+        {featuredOffers.map((offer) => (
+          <div class="p-6 rounded-lg border border-[#BFC1C5] bg-white">
+            <h3 class="text-lg font-semibold mb-3">{offer.title}</h3>
+            <p class="text-[#92949A] text-sm mb-6 leading-relaxed">{offer.description}</p>
+            <PrimaryButton label="Ø§Ø·Ù„Ø§Ø¹Ø§Øª Ø¨ÛŒØ´ØªØ±" href={offer.href} variant="outline" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-[#202124] text-white">
+    <div class="container">
+      <SectionHeading title="Ù…ØªØ®ØµØµØ§Ù†" subtitle="Ù…ØªØ®ØµØµØ§Ù†ÛŒ Ú©Ù‡ ØªØ¬Ø±Ø¨Ù‡ AROVA Ø±Ø§ Ø´Ú©Ù„ Ù…ÛŒâ€ŒØ¯Ù‡Ù†Ø¯" align="center" />
+      <div class="grid md:grid-cols-2 gap-8 mt-10">
+        {experts.filter((e) => e.status === 'published').map((expert) => (
+          <div class="p-6 rounded-lg bg-[#141414] border border-[#202124] flex flex-col gap-3">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-10 h-10 rounded-full bg-[#5B1E2D] flex items-center justify-center text-white font-bold text-sm">
+                {expert.nameFa.charAt(0)}
+              </div>
+              <div>
+                <div class="text-sm font-semibold">{expert.name}</div>
+                <div class="text-xs text-[#92949A]">{expert.roleFa}</div>
+              </div>
+            </div>
+            <p class="text-[#92949A] text-sm leading-relaxed mb-4">{expert.bioFa}</p>
+            <PrimaryButton label="Ù†Ù…Ø§ÛŒÙ‡ Ù…ØªØ®ØµØµ" href={`/experts/${expert.id}`} variant="outline" class="w-full" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container text-center">
+      <h2 class="text-3xl font-bold mb-6">Ø¢Ù…Ø§Ø¯Ù‡ Ø´Ø±ÙˆØ¹ Ú¯ÙØªâ€ŒÙˆÚ¯Ùˆ Ù‡Ø³ØªÛŒØ¯ØŸ</h2>
+      <p class="text-lg text-[#92949A] mb-8 max-w-xl mx-auto">Ø¢Ù…ÙˆØ²Ø´ØŒ Ù…Ø´Ø§ÙˆØ±Ù‡ ÛŒØ§ Ù¾Ø±ÙˆÚ˜Ù‡ â€” Ù…Ø§ Ø¨Ø±Ø§ÛŒ Ø±Ø§Ù‡Ù†Ù…Ø§ÛŒÛŒ Ø´Ù…Ø§ HERE Ù‡Ø³ØªÛŒÙ….</p>
+      <PrimaryButton label="Ø¯Ø±Ø®ÙˆØ§Ø³Øª Ù‡Ù…Ú©Ø§Ø±ÛŒ" href="/contact" variant="primary" />
+    </div>
+  </section>
+</BaseLayout>
+
+
+

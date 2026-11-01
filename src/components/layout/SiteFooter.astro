@@ -1,0 +1,48 @@
+---
+import { footerLinks } from "../../data/navigation";
+
+const currentYear = new Date().getFullYear();
+---
+<footer class="bg-[#141414] text-white mt-auto" aria-label="پانویس">
+  <div class="container py-12">
+    <div class="grid gap-8 md:grid-cols-3">
+      <div class="col-span-1 md:col-span-1">
+        <div class="flex items-center gap-2 mb-6">
+          <img src="/images/logo/arova-symbol.svg" alt="" width="28" height="28" class="block" aria-hidden="true" />
+          <span class="text-lg font-bold tracking-tight">AROVA</span>
+        </div>
+        <p class="text-sm text-[#92949A] leading-relaxed max-w-xs">
+          پیوند دانش، مهندسی و فناوری برای تبدیل مسائل پیچیده به تصمیم‌ها و راهکارهای قابل اجرا.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-widest text-[#BFC1C5] mb-6">خدمات</h3>
+        <ul class="space-y-3">
+          {footerLinks.services.map((link: { href: string; label: string }) => (
+            <li>
+              <a href={link.href} class="text-sm text-[#92949A] hover:text-white transition-colors">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-widest text-[#BFC1C5] mb-6">شرکت</h3>
+        <ul class="space-y-3">
+          {footerLinks.company.map((link: { href: string; label: string }) => (
+            <li>
+              <a href={link.href} class="text-sm text-[#92949A] hover:text-white transition-colors">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-[#202124] flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-sm text-[#92949A]">&copy; {currentYear} AROVA. هرگونه کپی‌برداری بدون مجوز مجاز نیست.</p>
+    </div>
+  </div>
+</footer>
+
+

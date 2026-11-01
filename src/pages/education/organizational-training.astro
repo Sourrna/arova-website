@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeading from "../../components/layout/SectionHeading.astro";
+import PrimaryButton from "../../components/ui/PrimaryButton.astro";
+---
+
+<BaseLayout title="آموزش و کارگاه‌های سازمانی | AROVA" description="برنامه‌های آموزشی سفارشی بر اساس نیاز، سطح و موارد استفاده سازمانی." canonical="/education/organizational-training">
+  <section class="section">
+    <div class="container">
+      <SectionHeading title="آموزش و کارگاه‌های سازمانی" subtitle="برنامه‌های آموزشی سفارشی برای سازمان‌ها و دانشگاه‌ها" align="center" />
+      <div class="grid lg:grid-cols-3 gap-8 mt-10">
+        <div class="lg:col-span-2 space-y-8">
+          <div class="p-6 rounded-lg border border-[#BFC1C5] bg-white">
+            <h3 class="text-lg font-semibold mb-4">جمهور الهدف</h3>
+            <p class="text-[#92949A] leading-relaxed">سازمان‌ها، دانشگاه‌ها و تیم‌های کار</p>
+          </div>
+          <div class="p-6 rounded-lg border border-[#BFC1C5] bg-white">
+            <h3 class="text-lg font-semibold mb-4">نتایج آموزشی</h3>
+            <ul class="list-disc list-inside text-[#92949A] leading-relaxed space-y-2">
+              <li>برنامه آموزشی متناسب با نیاز سازمانی</li>
+              <li>آموزش وردی یا محور کارگاهی</li>
+              <li>پشتیبانی و ارزیابی</li>
+            </ul>
+          </div>
+          <div class="p-6 rounded-lg border border-[#BFC1C5] bg-white">
+            <h3 class="text-lg font-semibold mb-4">پیش‌نیازها</h3>
+            <p class="text-[#92949A] leading-relaxed">جلسه کشف اولیه</p>
+          </div>
+        </div>
+        <div class="lg:col-span-1 space-y-6">
+          <div class="p-6 rounded-lg border border-[#BFC1C5] bg-white">
+            <h3 class="text-lg font-semibold mb-4">جزئیات اجرا</h3>
+            <p class="text-[#92949A] text-sm leading-relaxed"><span class="font-semibold">مدت:</span> بر اساس نیاز</p>
+            <p class="text-[#92949A] text-sm leading-relaxed"><span class="font-semibold">قالب:</span> حضوری یا مجازی</p>
+            <p class="text-[#92949A] text-sm leading-relaxed"><span class="font-semibold">مربیان:</span> سورنا</p>
+            <p class="text-[#92949A] text-sm leading-relaxed"><span class="font-semibold">سازمانی:</span> دارد</p>
+          </div>
+          <div class="p-6 rounded-lg border border-[#5B1E2D] bg-[#5B1E2D] text-white">
+            <h3 class="text-lg font-semibold mb-4">ثبت‌نام</h3>
+            <PrimaryButton label="درخواست کارگاه" href="/contact" variant="ghost" class="w-full" />
+          </div>
+        </div>
+      </div>
+      <p class="mt-8 text-sm text-[#92949A] text-center">تاریخ، روش ارائه و قیمت هر برنامه با سازمان تایید می‌شود.</p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/layout/SectionHeading.astro";
+import PrimaryButton from "../components/ui/PrimaryButton.astro";
+
+const modules = import.meta.glob('../content/services/*.md', { eager: true });
+const allMd = Object.entries(modules).map(([, mod]) => (mod as { frontmatter: { status?: string } & Record<string, unknown> }).frontmatter);
+const advisory = allMd.filter((f) => f.category === 'advisory' && f.status === 'published');
+---
+
+<BaseLayout title="مشاوره | AROVA" description="مشاوره استراتژیک، تحول دیجیتال و دیجیتال تون." canonical="/advisory">
+  <section class="section">
+    <div class="container">
+      <SectionHeading title="مشاوره" subtitle="مشاوره استراتژیک و فنی" align="center" />
+      <p class="text-lg text-[#92949A] mb-10 leading-relaxed max-w-2xl mx-auto text-center">
+        فرآیند مشاوره آرووا در ۵ مرحله پیش می‌رود: درک زمینه و مسئله، بررسی نیاز و محدودیت‌ها، تعریف گزینه‌ها و ریسک‌ها، تحویل نقشه راه یا توصیه فنی و تعریف پشتیبانی اجرای جداگانه.
+      </p>
+      <div class="grid md:grid-cols-3 gap-6 mt-10">
+        {advisory.map((f) => (
+          <div class="p-6 rounded-lg border border-[#BFC1C5] bg-white">
+            <h3 class="text-lg font-semibold mb-3">{f.title}</h3>
+            <p class="text-[#92949A] text-sm mb-6 leading-relaxed">{f.description}</p>
+            <PrimaryButton label="جزئیات بیشتر" href={`/advisory/${f.slug}`} variant="outline" />
+          </div>
+        ))}
+      </div>
+      <div class="mt-12 text-center">
+        <PrimaryButton label="درخواست جلسه مشاوره" href="/contact" variant="primary" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

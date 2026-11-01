@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 180" aria-label="AROVA combined bilingual lockup">
+  <defs>
+    <linearGradient id="combinedGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#141414" />
+      <stop offset="100%" stop-color="#202124" />
+    </linearGradient>
+  </defs>
+  <!-- Symbol -->
+  <g transform="translate(30, 20)">
+    <path d="M50 20 L20 90 Q35 55 50 90 L80 20 Q65 55 50 20 Z" fill="none" stroke="url(#combinedGrad)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+    <circle cx="50" cy="50" r="5" fill="#5B1E2D" />
+  </g>
+  <!-- Latin wordmark -->
+  <text x="120" y="115" font-family="'Vazirmatn', 'Inter', sans-serif" font-size="56" font-weight="700" fill="#141414" letter-spacing="-1">AROVA</text>
+  <!-- Persian wordmark -->
+  <text x="300" y="150" font-family="'Vazirmatn', sans-serif" font-size="42" font-weight="700" direction="rtl" fill="#5B1E2D" text-anchor="end">آرووا</text>
+  <path d="M10 170 H690" stroke="#5B1E2D" stroke-width="1" />
+</svg>

@@ -1,0 +1,24 @@
+---
+export interface Props {
+  label: string;
+  type?: 'button' | 'submit' | 'reset';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
+  disabled?: boolean;
+  href?: string;
+  class?: string;
+}
+const { label, type = 'button', variant = 'primary', disabled = false, href, class: className } = Astro.props;
+const base = 'inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md font-semibold text-base transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2';
+const variants: Record<string, string> = {
+  primary: 'bg-[#5B1E2D] text-white hover:bg-[#35131D] focus-visible:ring-[#5B1E2D]',
+  secondary: 'bg-[#202124] text-white hover:bg-[#141414] focus-visible:ring-[#202124]',
+  ghost: 'text-[#141414] hover:bg-[#F2EFE9] focus-visible:ring-[#141414]',
+  outline: 'border border-[#141414] text-[#141414] hover:bg-[#141414] hover:text-white focus-visible:ring-[#141414]',
+};
+const cls = `${base} ${variants[variant]} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`;
+---
+{href ? (
+  <a href={href} class={`${cls} ${className || ''}`.trim()}>{label}</a>
+) : (
+  <button type={type} disabled={disabled} class={`${cls} ${className || ''}`.trim()}>{label}</button>
+)}

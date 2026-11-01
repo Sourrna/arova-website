@@ -1,0 +1,26 @@
+---
+export interface Props {
+  id: string;
+  label: string;
+  type?: "text" | "email" | "tel" | "password" | "number" | "url" | "search" | "date";
+  required?: boolean;
+  error?: string;
+  value?: string;
+}
+const { id, label, type = 'text', required = false, error, value } = Astro.props;
+---
+<div class="mb-6">
+  <label for={id} class="block text-base font-medium mb-2 text-[#141414]">
+    {label}{required ? ' <span class="text-[#5B1E2D]">*</span>' : ''}
+  </label>
+  <input
+    id={id}
+    type={type}
+    class={`w-full px-4 py-3 rounded-md border transition-colors focus-visible:ring-2 focus-visible:ring-[#5B1E2D] focus-visible:border-transparent ${error ? 'border-[#5B1E2D]' : 'border-[#BFC1C5]'}`}
+    value={value || ''}
+    required={required}
+    aria-invalid={error ? 'true' : 'false'}
+    aria-describedby={error ? `${id}-error` : undefined}
+  />
+  {error && <p id={`${id}-error`} class="mt-2 text-sm text-[#5B1E2D]" role="alert">{error}</p>}
+</div>

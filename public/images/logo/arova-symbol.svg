@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" aria-label="AROVA symbol">
+  <defs>
+    <linearGradient id="symbolGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5B1E2D" />
+      <stop offset="100%" stop-color="#35131D" />
+    </linearGradient>
+  </defs>
+  <!-- Abstract geometric symbol: convergence of three paths -->
+  <path d="M100 20 L40 180 Q70 100 100 180 L160 20 Q130 100 100 20 Z" fill="none" stroke="url(#symbolGrad)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="100" cy="100" r="6" fill="#5B1E2D" />
+  <circle cx="100" cy="100" r="2" fill="#FFFFFF" />
+</svg>

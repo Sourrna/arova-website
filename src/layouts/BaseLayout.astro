@@ -1,0 +1,118 @@
+---
+import SiteHeader from "../components/layout/SiteHeader.astro";
+import MobileNavigation from "../components/navigation/MobileNavigation.astro";
+import SiteFooter from "../components/layout/SiteFooter.astro";
+import SkipLink from "../components/ui/SkipLink.astro";
+
+export interface BaseLayoutProps {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const { title = 'AROVA — آرووا', description = 'آرووا آموزش، مشاوره تخصصی و راهکارهای دیجیتال را به هم پیوند می‌دهد.', canonical } = Astro.props;
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://arova.example.com';
+const pageUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
+---
+
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={pageUrl} />
+    <style is:global>
+      :root {
+        --color-obsidian: #141414;
+        --color-graphite: #202124;
+        --color-burgundy: #5B1E2D;
+        --color-wine: #35131D;
+        --color-ivory: #F2EFE9;
+        --color-silver: #BFC1C5;
+        --color-muted-gray: #92949A;
+        --color-white: #FFFFFF;
+        --font-persian: 'Vazirmatn', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; text-rendering: optimizeLegibility; }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--color-ivory);
+        color: var(--color-obsidian);
+        font-family: var(--font-persian);
+        font-size: 1rem;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: inherit; text-decoration: none; }
+      button { font-family: inherit; cursor: pointer; border: none; background: none; margin: 0; padding: 0; }
+      img { max-width: 100%; height: auto; display: block; }
+      h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 600; line-height: 1.25; }
+      p { margin: 0; }
+      ul, ol { margin: 0; padding: 0; list-style: none; }
+      .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; width: 100%; }
+      .skip-link {
+        position: absolute; top: 1rem; inset-inline-start: -9999px; z-index: 50;
+        padding: 0.75rem 1.5rem; background: #5B1E2D; color: #fff;
+        font-weight: 600; border-radius: 8px; text-decoration: none;
+      }
+      .skip-link:focus { inset-inline-start: 1rem; }
+      .section { padding: 4rem 0; }
+      .text-center { text-align: center; }
+      .text-left { text-align: left; }
+      .text-right { text-align: right; }
+      .flex { display: flex; }
+      .grid { display: grid; }
+      .hidden { display: none; }
+      .items-center { align-items: center; }
+      .justify-between { justify-content: space-between; }
+      .gap-2 { gap: 0.5rem; }
+      .gap-4 { gap: 1rem; }
+      .gap-6 { gap: 1.5rem; }
+      .gap-8 { gap: 2rem; }
+      .mb-4 { margin-bottom: 1rem; }
+      .mb-6 { margin-bottom: 1.5rem; }
+      .mb-8 { margin-bottom: 2rem; }
+      .mt-8 { margin-top: 2rem; }
+      .mx-auto { margin-inline: auto; }
+      .px-4 { padding-inline: 1rem; }
+      .py-6 { padding-block: 1.5rem; }
+      .py-8 { padding-block: 2rem; }
+      .w-full { width: 100%; }
+      .rounded-md { border-radius: 8px; }
+      .border { border: 1px solid rgba(20,20,20,0.12); }
+      .transition { transition: all 200ms ease; }
+      .font-semibold { font-weight: 600; }
+      .font-bold { font-weight: 700; }
+      .text-sm { font-size: 0.875rem; }
+      .text-base { font-size: 1rem; }
+      .text-lg { font-size: 1.125rem; }
+      .text-xl { font-size: 1.25rem; }
+      .text-2xl { font-size: 1.5rem; }
+      .text-3xl { font-size: 1.875rem; }
+      .text-4xl { font-size: 2.25rem; }
+      .text-5xl { font-size: 3rem; }
+      .leading-tight { line-height: 1.25; }
+      .leading-relaxed { line-height: 1.75; }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    </style>
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+  </head>
+  <body class="antialiased selection:bg-[#5B1E2D] selection:text-white">
+    <SkipLink href="#main-content" label="نبarrass به محتوای اصلی" />
+    <SiteHeader />
+    <main id="main-content"><slot /></main>
+    <SiteFooter />
+    <MobileNavigation />
+  </body>
+</html>

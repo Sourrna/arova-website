@@ -1,0 +1,266 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/layout/SectionHeading.astro";
+import PrimaryButton from "../components/ui/PrimaryButton.astro";
+import { businessLines, mission, vision } from "../data/brand";
+
+const CMS_URL = import.meta.env.PUBLIC_CMS_URL || "http://localhost:4000";
+let founders: { slug: string; name: string; public_title: string; short_positioning: string; bio_short?: string }[] = [];
+try {
+  const res = await fetch(`${CMS_URL}/api/founders`);
+  if (res.ok) {
+    const json = await res.json();
+    founders = json.data || [];
+  }
+} catch (e) {
+  founders = [];
+}
+
+const principles = [
+  'شواهد پیش از ادعا',
+  'وضوح پیش از پیچیدگی',
+  'راهبرد متصل به اجرا',
+  'فناوری در خدمت مسائل واقعی',
+  'یادگیری که قابلیت کاربردی می‌سازد',
+  'کار مسئولانه، شفاف و تکرارپذیر',
+];
+
+const method = ['درک', 'تعریف', 'طراحی', 'ساخت / آموزش', 'ارزیابی', 'بهبود'];
+---
+
+<BaseLayout title="درباره آرووا | AROVA" description="چرا آرووا وجود دارد و چگونه دانش، پژوهش و اجرا را به هم پیوند می‌دهد." canonical="/about">
+  <section class="section">
+    <div class="container">
+      <SectionHeading title="آرووا" subtitle="از دانستن تا ساختن" align="center" />
+      <p class="text-lg text-[#92949A] leading-relaxed max-w-3xl mx-auto text-center mt-6">
+        آرووا یک پلتفرم دیجیتال آموزش، مشاوره و راهکار است که دانش را به تصمیم و فناوری را به راهکار تبدیل می‌کند. سه محور آموزش، مشاوره و راهکارهای دیجیتال در یک ساختار واحد کار می‌کنند.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-[#202124] text-white">
+    <div class="container">
+      <SectionHeading title="داستان ما" subtitle="چرا آرووا وجود دارد" align="center" />
+      <div class="max-w-3xl mx-auto mt-8 space-y-4 text-[#BFC1C5] leading-relaxed">
+        <p>آرووا از یک باور ساده شکل گرفته است: دانش باید به تصمیم بهتر و نتیجه عملی برسد. بسیاری از سازمان‌ها و افراد به اطلاعات دسترسی دارند، اما به مسیری برای تبدیل آن به اقدام نیاز دارند.</p>
+        <p>ما آموزش، مشاوره و راهکارهای دیجیتال را در یک برند واحد جمع کرده‌ایم تا دانش، تفکر تحلیلی و اجرا در کنار یکدیگر کار کنند.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading title="بنیان‌گذاران" subtitle="دو توانمندی مکمل" align="center" />
+      {founders.length === 0 && (
+        <p class="text-center text-[#92949A] mt-8">پروفایل بنیان‌گذاران در حال آماده‌سازی است.</p>
+      )}
+      <div class="grid md:grid-cols-2 gap-8 mt-10">
+        {founders.map((f) => (
+          <div class="p-8 rounded-lg border border-[#BFC1C5] bg-white">
+            <h3 class="text-xl font-semibold mb-2">{f.name}</h3>
+            <p class="text-[#5B1E2D] font-medium mb-4">{f.public_title}</p>
+            <p class="text-[#92949A] leading-relaxed text-sm">{f.short_positioning}</p>
+            {f.bio_short && <p class="text-[#92949A] leading-relaxed text-sm mt-2">{f.bio_short}</p>}
+            <a href={`/experts/${f.slug}`} class="text-[#5B1E2D] text-sm font-medium mt-4 inline-block">مشاهده پروفایل ←</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-[#202124] text-white">
+    <div class="container">
+      <SectionHeading title="پایه علمی و پژوهشی" subtitle="دانش با انضباط" align="center" />
+      <p class="text-[#BFC1C5] leading-relaxed max-w-3xl mx-auto text-center mt-6">
+        کار آرووا با یادگیری دقیق، تفکر تحلیلی و تخصص موضوعی پشتیبانی می‌شود. ادعاهای علمی تنها با شواهد و منابع تأییدشده منتشر خواهند شد.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading title="اجرا و نتیجه عملی" subtitle="فراتر از نظریه" align="center" />
+      <p class="text-[#92949A] leading-relaxed max-w-3xl mx-auto text-center mt-6">
+        آرووا به نتایج قابل استفاده توجه دارد: درک نیاز، تعریف مسئله، طراحی مداخله، پیاده‌سازی، ارزیابی و بهبود. نمونه‌های واقعی تنها با شواهد و مجوز انتشار نمایش داده می‌شوند.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading title="فلسفه و روش کار" align="center" />
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        {principles.map((p) => (
+          <div class="p-6 rounded-lg border border-[#BFC1C5] bg-white text-center">
+            <p class="text-[#141414] font-medium">{p}</p>
+          </div>
+        ))}
+      </div>
+      <div class="flex flex-wrap justify-center gap-3 mt-10">
+        {method.map((m) => (
+          <span class="px-4 py-2 rounded-full bg-[#5B1E2D] text-white text-sm">{m}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-[#202124] text-white">
+    <div class="container">
+      <SectionHeading title="چرا آرووا" align="center" />
+      <div class="grid md:grid-cols-2 gap-6 mt-8 max-w-4xl mx-auto">
+        <div class="p-6 rounded-lg bg-[#141414] border border-[#35131D]">
+          <h3 class="font-semibold mb-2">توانمندی‌های مکمل</h3>
+          <p class="text-[#92949A] text-sm leading-relaxed">پیوند تفکر علمی و آکادمیک با اجرا و محصول دیجیتال.</p>
+        </div>
+        <div class="p-6 rounded-lg bg-[#141414] border border-[#35131D]">
+          <h3 class="font-semibold mb-2">ساختار یکپارچه</h3>
+          <p class="text-[#92949A] text-sm leading-relaxed">آموزش، مشاوره و راهکارهای دیجیتال در یک برند.</p>
+        </div>
+        <div class="p-6 rounded-lg bg-[#141414] border border-[#35131D]">
+          <h3 class="font-semibold mb-2">فارسی‌محور</h3>
+          <p class="text-[#92949A] text-sm leading-relaxed">ارتباط و زمینه‌شناسی بازار ایران.</p>
+        </div>
+        <div class="p-6 rounded-lg bg-[#141414] border border-[#35131D]">
+          <h3 class="font-semibold mb-2">نتایج قابل استفاده</h3>
+          <p class="text-[#92949A] text-sm leading-relaxed">تمرکز بر قابلیت اجرا و تصمیم‌گیری.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container text-center">
+      <h2 class="text-3xl font-bold mb-6">شروع گفت‌وگو</h2>
+      <p class="text-lg text-[#92949A] mb-8 max-w-xl mx-auto">آموزش، مشاوره یا پروژه — ما برای راهنمایی شما اینجا هستیم.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <PrimaryButton label="مشاهده برنامه‌های آموزشی" href="/education" variant="primary" />
+        <PrimaryButton label="درخواست مشاوره" href="/contact" variant="secondary" />
+        <PrimaryButton label="استعلام پروژه" href="/contact" variant="secondary" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+
+<BaseLayout title="درباره آرووا | AROVA" description="چرا آرووا وجود دارد و چگونه دانش، پژوهش و اجرا را به هم پیوند می‌دهد." canonical="/about">
+  <section class="section">
+    <div class="container">
+      <SectionHeading title="آرووا" subtitle="از دانستن تا ساختن" align="center" />
+      <p class="text-lg text-[#92949A] leading-relaxed max-w-3xl mx-auto text-center mt-6">
+        آرووا یک پلتفرم دیجیتال آموزش، مشاوره و راهکار است که دانش را به تصمیم و فناوری را به راهکار تبدیل می‌کند. سه محور آموزش، مشاوره و راهکارهای دیجیتال در یک ساختار واحد کار می‌کنند.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-[#202124] text-white">
+    <div class="container">
+      <SectionHeading title="داستان ما" subtitle="چرا آرووا وجود دارد" align="center" />
+      <div class="max-w-3xl mx-auto mt-8 space-y-4 text-[#BFC1C5] leading-relaxed">
+        <p>آرووا از یک باور ساده شکل گرفته است: دانش باید به تصمیم بهتر و نتیجه عملی برسد. بسیاری از سازمان‌ها و افراد به اطلاعات دسترسی دارند، اما به مسیری برای تبدیل آن به اقدام نیاز دارند.</p>
+        <p>ما آموزش، مشاوره و راهکارهای دیجیتال را در یک برند واحد جمع کرده‌ایم تا دانش، تفکر تحلیلی و اجرا در کنار یکدیگر کار کنند.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading title="بنیان‌گذاران" subtitle="دو توانمندی مکمل" align="center" />
+      <div class="grid md:grid-cols-2 gap-8 mt-10">
+        <div class="p-8 rounded-lg border border-[#BFC1C5] bg-white">
+          <h3 class="text-xl font-semibold mb-2">سورنا</h3>
+          <p class="text-[#5B1E2D] font-medium mb-4">محصول دیجیتال و تجربه کاربری | هوش مصنوعی کاربردی</p>
+          <p class="text-[#92949A] leading-relaxed text-sm">پروفایل کامل در انتظار تأیید محتوای منبع است. فیلدهای زیر در CMS به صورت پیش‌نویس نگهداری می‌شوند.</p>
+          <ul class="list-disc list-inside text-[#92949A] text-sm leading-relaxed space-y-1 mt-4">
+            <li>فکر محصول و تجربه کاربری دیجیتال</li>
+            <li>پیاده‌سازی رابط کاربری (frontend)</li>
+            <li>آموزش هوش مصنوعی کاربردی و ورک‌فلوهای LLM</li>
+          </ul>
+          <a href="/experts/sourena" class="text-[#5B1E2D] text-sm font-medium mt-4 inline-block">مشاهده پروفایل ←</a>
+        </div>
+        <div class="p-8 rounded-lg border border-[#BFC1C5] bg-white">
+          <h3 class="text-xl font-semibold mb-2">دکتر محمدحسین روزبهانی</h3>
+          <p class="text-[#5B1E2D] font-medium mb-4">بنیان‌گذار علمی و آکادمیک</p>
+          <p class="text-[#92949A] leading-relaxed text-sm">پروفایل کامل در انتظار تأیید محتوای منبع (CV) است. فیلدهای زیر در CMS به صورت پیش‌نویس نگهداری می‌شوند.</p>
+          <ul class="list-disc list-inside text-[#92949A] text-sm leading-relaxed space-y-1 mt-4">
+            <li>پیشینه آکادمیک و پژوهشی (در انتظار تأیید)</li>
+            <li>تدریس و انتقال دانش (در انتظار تأیید)</li>
+            <li>مشاوره علمی و تحلیلی (در انتظار تأیید)</li>
+          </ul>
+          <a href="/experts/dr-mohammad-hossein-roozbahani" class="text-[#5B1E2D] text-sm font-medium mt-4 inline-block">مشاهده پروفایل ←</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-[#202124] text-white">
+    <div class="container">
+      <SectionHeading title="پایه علمی و پژوهشی" subtitle="دانش با انضباط" align="center" />
+      <p class="text-[#BFC1C5] leading-relaxed max-w-3xl mx-auto text-center mt-6">
+        کار آرووا با یادگیری دقیق، تفکر تحلیلی و تخصص موضوعی پشتیبانی می‌شود. ادعاهای علمی تنها با شواهد و منابع تأییدشده منتشر خواهند شد.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading title="اجرا و نتیجه عملی" subtitle="فراتر از نظریه" align="center" />
+      <p class="text-[#92949A] leading-relaxed max-w-3xl mx-auto text-center mt-6">
+        آرووا به نتایج قابل استفاده توجه دارد: درک نیاز، تعریف مسئله، طراحی مداخله، پیاده‌سازی، ارزیابی و بهبود. نمونه‌های واقعی تنها با شواهد و مجوز انتشار نمایش داده می‌شوند.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading title="فلسفه و روش کار" align="center" />
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        {principles.map((p) => (
+          <div class="p-6 rounded-lg border border-[#BFC1C5] bg-white text-center">
+            <p class="text-[#141414] font-medium">{p}</p>
+          </div>
+        ))}
+      </div>
+      <div class="flex flex-wrap justify-center gap-3 mt-10">
+        {method.map((m) => (
+          <span class="px-4 py-2 rounded-full bg-[#5B1E2D] text-white text-sm">{m}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-[#202124] text-white">
+    <div class="container">
+      <SectionHeading title="چرا آرووا" align="center" />
+      <div class="grid md:grid-cols-2 gap-6 mt-8 max-w-4xl mx-auto">
+        <div class="p-6 rounded-lg bg-[#141414] border border-[#35131D]">
+          <h3 class="font-semibold mb-2">توانمندی‌های مکمل</h3>
+          <p class="text-[#92949A] text-sm leading-relaxed">پیوند تفکر علمی و آکادمیک با اجرا و محصول دیجیتال.</p>
+        </div>
+        <div class="p-6 rounded-lg bg-[#141414] border border-[#35131D]">
+          <h3 class="font-semibold mb-2">ساختار یکپارچه</h3>
+          <p class="text-[#92949A] text-sm leading-relaxed">آموزش، مشاوره و راهکارهای دیجیتال در یک برند.</p>
+        </div>
+        <div class="p-6 rounded-lg bg-[#141414] border border-[#35131D]">
+          <h3 class="font-semibold mb-2">فارسی‌محور</h3>
+          <p class="text-[#92949A] text-sm leading-relaxed">ارتباط و زمینه‌شناسی بازار ایران.</p>
+        </div>
+        <div class="p-6 rounded-lg bg-[#141414] border border-[#35131D]">
+          <h3 class="font-semibold mb-2">نتایج قابل استفاده</h3>
+          <p class="text-[#92949A] text-sm leading-relaxed">تمرکز بر قابلیت اجرا و تصمیم‌گیری.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container text-center">
+      <h2 class="text-3xl font-bold mb-6">شروع گفت‌وگو</h2>
+      <p class="text-lg text-[#92949A] mb-8 max-w-xl mx-auto">آموزش، مشاوره یا پروژه — ما برای راهنمایی شما اینجا هستیم.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <PrimaryButton label="مشاهده برنامه‌های آموزشی" href="/education" variant="primary" />
+        <PrimaryButton label="درخواست مشاوره" href="/contact" variant="secondary" />
+        <PrimaryButton label="استعلام پروژه" href="/contact" variant="secondary" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,7 @@
+---
+export interface Props {
+  children: any;
+}
+const { children } = Astro.props;
+---
+<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">{children}</div>

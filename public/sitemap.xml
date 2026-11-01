@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://arova.example.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://arova.example.com/about</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arova.example.com/services</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arova.example.com/education</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arova.example.com/education/ai-literacy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arova.example.com/education/llm-workflows</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arova.example.com/education/organizational-training</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arova.example.com/advisory</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arova.example.com/advisory/ai-strategy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arova.example.com/advisory/digital-transformation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arova.example.com/advisory/digital-twin</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arova.example.com/digital-solutions</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arova.example.com/digital-solutions/ux-audit</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arova.example.com/digital-solutions/web-experience</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arova.example.com/experts</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arova.example.com/experts/sourena</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arova.example.com/experts/dr-mohammad-hossein-roozbahani</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://arova.example.com/contact</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arova.example.com/privacy</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+</urlset>

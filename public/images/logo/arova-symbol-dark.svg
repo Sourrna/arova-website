@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" aria-label="AROVA symbol dark">
+  <defs>
+    <linearGradient id="symbolGradDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2EFE9" />
+      <stop offset="100%" stop-color="#BFC1C5" />
+    </linearGradient>
+  </defs>
+  <path d="M100 20 L40 180 Q70 100 100 180 L160 20 Q130 100 100 20 Z" fill="none" stroke="url(#symbolGradDark)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="100" cy="100" r="6" fill="#F2EFE9" />
+  <circle cx="100" cy="100" r="2" fill="#141414" />
+</svg>

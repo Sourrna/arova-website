@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/layout/SectionHeading.astro";
+import PrimaryButton from "../components/ui/PrimaryButton.astro";
+
+const modules = import.meta.glob('../content/workshops/*.md', { eager: true });
+const allMd = Object.entries(modules).map(([, mod]) => (mod as { frontmatter: { status?: string } & Record<string, unknown> }).frontmatter);
+const published = allMd.filter((m) => m.status === 'published');
+---
+
+<BaseLayout title="آموزش | AROVA" description="کارگاه‌ها، دوره‌ها و آموزش‌های سازمانی آرووا." canonical="/education">
+  <section class="section">
+    <div class="container">
+      <SectionHeading title="آموزش" subtitle="کارگاه‌ها، دوره‌ها و برنامه‌های یادگیری" align="center" />
+      <div class="grid md:grid-cols-3 gap-6 mt-10">
+        {published.map((f) => (
+          <div class="p-6 rounded-lg border border-[#BFC1C5] bg-white">
+            <h3 class="text-lg font-semibold mb-3">{f.title}</h3>
+            <p class="text-[#92949A] text-sm mb-6 leading-relaxed">{f.description}</p>
+            <PrimaryButton label="جزئیات بیشتر" href={`/education/${f.slug}`} variant="outline" />
+          </div>
+        ))}
+        {!published.length && <p class="col-span-3 text-center text-[#92949A]">هنوز کارگاهی منتشر نشده است.</p>}
+      </div>
+      <div class="mt-12 text-center">
+        <PrimaryButton label="دریافت اطلاعات دوره‌ها" href="/contact" variant="primary" />
+      </div>
+      <p class="mt-6 text-sm text-[#92949A] text-center">تاریخ، روش ارائه و قیمت هر برنامه بر اساس نیاز سازمان تعیین می‌شود.</p>
+    </div>
+  </section>
+</BaseLayout>

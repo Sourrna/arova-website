@@ -1,0 +1,14 @@
+---
+export interface Props {
+  label: string;
+  href: string;
+  variant?: 'accent' | 'muted';
+}
+const { label, href, variant = 'accent' } = Astro.props;
+const base = 'text-base font-medium transition-colors hover:underline underline-offset-2';
+const variants: Record<string, string> = {
+  accent: 'text-[#5B1E2D] hover:text-[#35131D]',
+  muted: 'text-[#92949A] hover:text-[#5B1E2D]',
+};
+---
+<a href={href} class={`${base} ${variants[variant]}`}>{label}</a>

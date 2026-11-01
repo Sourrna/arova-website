@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/layout/SectionHeading.astro";
+import PrimaryButton from "../components/ui/PrimaryButton.astro";
+
+const modules = import.meta.glob('../content/services/*.md', { eager: true });
+const allMd = Object.entries(modules).map(([, mod]) => (mod as { frontmatter: { status?: string } & Record<string, unknown> }).frontmatter);
+const published = allMd.filter((m) => m.status === 'published');
+---
+
+<BaseLayout title="راهکارهای دیجیتال | AROVA" description="هوش مصنوعی کاربردی، توسعه محصول و نرم‌افزار، داده و دوقلوی دیجیتال." canonical="/digital-solutions">
+  <section class="section">
+    <div class="container">
+      <SectionHeading title="راهکارهای دیجیتال" subtitle="فناوری در خدمت مسائل واقعی" align="center" />
+      <div class="grid md:grid-cols-2 gap-6 mt-10">
+        {published.map((s: { status?: string } & Record<string, unknown>) => (
+          <a href={`/digital-solutions/${s.slug}`} class="p-6 rounded-lg border border-[#BFC1C5] bg-white block">
+            <h3 class="text-xl font-semibold mb-2">{s.title}</h3>
+            <p class="text-[#92949A] text-sm">{s.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

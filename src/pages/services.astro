@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/layout/SectionHeading.astro";
+import PrimaryButton from "../components/ui/PrimaryButton.astro";
+import { navigation } from "../data/navigation";
+---
+
+<BaseLayout title="خدمات | AROVA" description="آموزش، مشاوره و راهکارهای دیجیتال آرووا." canonical="/services">
+  <section class="section">
+    <div class="container">
+      <SectionHeading title="خدمات" subtitle="سه حوزه فعالیت آرووا" align="center" />
+      <div class="grid md:grid-cols-3 gap-8 mt-12">
+        <div class="p-8 rounded-lg border border-[#BFC1C5] bg-white">
+          <h3 class="text-xl font-semibold mb-4">آموزش</h3>
+          <p class="text-[#92949A] leading-relaxed mb-6">کارگاه‌ها، دوره‌ها، آموزش‌های سازمانی و برنامه‌های یادگیری.</p>
+          <PrimaryButton label="مشاهده آموزش‌ها" href="/education" variant="outline" class="w-full" />
+        </div>
+        <div class="p-8 rounded-lg border border-[#BFC1C5] bg-white">
+          <h3 class="text-xl font-semibold mb-4">مشاوره</h3>
+          <p class="text-[#92949A] leading-relaxed mb-6">مشاوره استراتژیک و فنی، تحول دیجیتال و دیجیتال تون.</p>
+          <PrimaryButton label="مشاهده مشاوره‌ها" href="/advisory" variant="outline" class="w-full" />
+        </div>
+        <div class="p-8 rounded-lg border border-[#BFC1C5] bg-white">
+          <h3 class="text-xl font-semibold mb-4">راهکارهای دیجیتال</h3>
+          <p class="text-[#92949A] leading-relaxed mb-6">بررسی تجربه کاربری، طراحی وب و پیاده‌سازی Frontend.</p>
+          <PrimaryButton label="مشاهده راهکارها" href="/digital-solutions" variant="outline" class="w-full" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+
